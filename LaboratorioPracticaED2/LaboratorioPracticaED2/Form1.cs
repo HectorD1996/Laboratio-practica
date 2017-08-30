@@ -12,6 +12,9 @@ namespace LaboratorioPracticaED2
 {
     public partial class Form1 : Form
     {
+        string _currentPath;
+        MusicPlayer player = new MusicPlayer();
+
         public Form1()
         {
             InitializeComponent();
@@ -20,6 +23,29 @@ namespace LaboratorioPracticaED2
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.ShowDialog();
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            player.play();
+            
+        }
+
+        private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
+            label1.Text = openFileDialog1.FileName;
+            player.open(openFileDialog1.FileName);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            player.stop();
         }
     }
 }
