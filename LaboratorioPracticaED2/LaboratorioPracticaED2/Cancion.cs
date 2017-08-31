@@ -27,5 +27,11 @@ namespace LaboratorioPracticaED2
             }
             
         }
+        public int CompareTo(string NameCompare)
+        {
+          return Titulo.CompareTo(NameCompare);
+
+            
+        }
     }
 }

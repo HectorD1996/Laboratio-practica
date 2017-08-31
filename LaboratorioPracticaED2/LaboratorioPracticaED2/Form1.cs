@@ -20,6 +20,7 @@ namespace LaboratorioPracticaED2
         List<Cancion> Canciones = new List<Cancion>();
         List<ListasReproduccion> ListRepro = new List<ListasReproduccion>();
         MusicPlayer player = new MusicPlayer();
+        ListasReproduccion Actual = new ListasReproduccion();
 
         public Form1()
         {
@@ -202,6 +203,7 @@ namespace LaboratorioPracticaED2
 
         private void button5_Click_1(object sender, EventArgs e)
         {
+            
             ListaMusica.Items.Clear();
             btnRegresar.Visible = true;
             foreach (ListasReproduccion l in ListRepro)
@@ -212,6 +214,7 @@ namespace LaboratorioPracticaED2
                     {
                         ListaMusica.Items.Add(k.Titulo);
                     }
+                    Actual = l;
                 }
             }
 
@@ -219,7 +222,17 @@ namespace LaboratorioPracticaED2
 
         private void btnOrdenar_Click(object sender, EventArgs e)
         {
-            Canciones.Sort();
+            
+            if (cmbOpciones.Text != "")
+            {
+                Actual.Ordenar(cmbOpciones.Text);
+                ListaMusica.Items.Clear();
+                foreach (Cancion k in Actual.ListaR)
+                {
+                    ListaMusica.Items.Add(k.Titulo);
+                }
+            }
+            
         }
     }
 }
