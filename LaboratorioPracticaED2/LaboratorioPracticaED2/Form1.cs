@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using Microsoft.VisualBasic;
 
 namespace LaboratorioPracticaED2
 {
@@ -17,7 +18,7 @@ namespace LaboratorioPracticaED2
         TagLib.File file = TagLib.File.Create(@"C:\Users\Hector\Music\01 - MOON PRIDE.mp3");
        
         List<Cancion> Canciones = new List<Cancion>();
-        List<String> Backup = new List<string>();
+        List<ListasReproduccion> ListRepro = new List<ListasReproduccion>();
         MusicPlayer player = new MusicPlayer();
 
         public Form1()
@@ -32,18 +33,23 @@ namespace LaboratorioPracticaED2
 
         private void button1_Click(object sender, EventArgs e)
         {
+            folderBrowserDialog1.SelectedPath = null;
             folderBrowserDialog1.ShowDialog();
-            string[] canc = Directory.GetFiles(folderBrowserDialog1.SelectedPath, "*mp3");
-            foreach (String Song in canc)
+            if (folderBrowserDialog1.SelectedPath != "")
             {
-                Cancion Musica = new Cancion(TagLib.File.Create(Song), Song);
-                Canciones.Add(Musica);
-                
+                string[] canc = Directory.GetFiles(folderBrowserDialog1.SelectedPath, "*mp3");
+                foreach (String Song in canc)
+                {
+                    Cancion Musica = new Cancion(TagLib.File.Create(Song), Song);
+                    Canciones.Add(Musica);
+
+                }
+                ListaMusica.Items.Clear();
+                LLenar_Listbox();
+
+                canc = new string[canc.Length];
             }
-            ListaMusica.Items.Clear();
-            LLenar_Listbox();
            
-            
             
         }
         public void LLenar_Listbox()
@@ -120,6 +126,100 @@ namespace LaboratorioPracticaED2
         private void button5_Click(object sender, EventArgs e)
         {
             LLenar_Listbox();
+        }
+
+        private void btnLista_Click(object sender, EventArgs e)
+        {
+            string name = "";
+            if (ListaMusica.SelectedIndex != -1 && ListaListas.SelectedIndex == -1)
+            {
+                name = ShowMyDialogBox();
+                List<Cancion> temp = new List<Cancion>();
+                foreach (Cancion k in Canciones)
+                {
+                    if (ListaMusica.SelectedItem.ToString() == k.Titulo)
+                    {
+                        temp.Add(k);
+                        ListasReproduccion Lista1 = new ListasReproduccion(temp, name);
+                        ListRepro.Add(Lista1);
+                    }
+                }
+            }
+            else if(ListaMusica.SelectedIndex != -1)
+            {
+
+                foreach (ListasReproduccion l in ListRepro)
+                {
+                    if (ListaListas.SelectedItem.ToString() == l.NombreLista)
+                    {
+                        foreach (Cancion k in Canciones)
+                        {
+                            if (ListaMusica.SelectedItem.ToString() == k.Titulo)
+                            {
+                                l.ListaR.Add(k);
+                                
+                            }
+                        }
+                    }
+                }
+            }
+
+            ListaListas.Items.Clear();
+            foreach (ListasReproduccion i in ListRepro)
+            {
+
+                ListaListas.Items.Add(i.NombreLista);
+
+            }
+
+
+        }
+
+        public string ShowMyDialogBox()
+        {
+            string tlist = "";
+            Form2 testDialog = new Form2();
+            
+            // Show testDialog as a modal dialog and determine if DialogResult = OK.
+            if (testDialog.ShowDialog(this) == DialogResult.OK)
+            {
+                
+                // Read the contents of testDialog's TextBox.
+                tlist = testDialog.textBox1.Text;
+            }
+            else
+            {
+                tlist = "Cancelled";
+            }
+            testDialog.Dispose();
+            return tlist;
+        }
+
+        private void ListaListas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button5_Click_1(object sender, EventArgs e)
+        {
+            ListaMusica.Items.Clear();
+            btnRegresar.Visible = true;
+            foreach (ListasReproduccion l in ListRepro)
+            {
+                if (ListaListas.SelectedItem.ToString() == l.NombreLista)
+                {
+                    foreach (Cancion k in l.ListaR)
+                    {
+                        ListaMusica.Items.Add(k.Titulo);
+                    }
+                }
+            }
+
+        }
+
+        private void btnOrdenar_Click(object sender, EventArgs e)
+        {
+            Canciones.Sort();
         }
     }
 }
