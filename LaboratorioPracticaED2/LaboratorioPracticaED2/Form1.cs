@@ -17,7 +17,7 @@ namespace LaboratorioPracticaED2
         TagLib.File file = TagLib.File.Create(@"C:\Users\Hector\Music\01 - MOON PRIDE.mp3");
        
         List<Cancion> Canciones = new List<Cancion>();
-        Dictionary<TagLib.File, String> ListaCanciones = new Dictionary<TagLib.File, string>();
+        
         MusicPlayer player = new MusicPlayer();
 
         public Form1()
@@ -32,12 +32,38 @@ namespace LaboratorioPracticaED2
 
         private void button1_Click(object sender, EventArgs e)
         {
-            openFileDialog1.ShowDialog();
-
+            folderBrowserDialog1.ShowDialog();
+            string[] canc = Directory.GetFiles(folderBrowserDialog1.SelectedPath, "*mp3");
+            foreach (String Song in canc)
+            {
+                Cancion Musica = new Cancion(TagLib.File.Create(Song), Song);
+                Canciones.Add(Musica);
+                
+            }
+            ListaMusica.Items.Clear();
+            foreach (Cancion i in Canciones)
+            {
+              
+                    ListaMusica.Items.Add(i.Titulo);
+               
+                    
+                
+                
+            }
+            
+            
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            player.stop();
+            foreach (Cancion k in Canciones)
+            {
+                if (ListaMusica.SelectedItem.ToString() == k.Titulo)
+                {
+                    player.open(k.Archivo.Name);
+                }
+            }
             player.play();
             
         }
