@@ -7,12 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace LaboratorioPracticaED2
 {
     public partial class Form1 : Form
     {
-        string _currentPath;
+       
+        TagLib.File file = TagLib.File.Create(@"C:\Users\Hector\Music\01 - MOON PRIDE.mp3");
+       
+        List<Cancion> Canciones = new List<Cancion>();
+        Dictionary<TagLib.File, String> ListaCanciones = new Dictionary<TagLib.File, string>();
         MusicPlayer player = new MusicPlayer();
 
         public Form1()
@@ -41,11 +46,26 @@ namespace LaboratorioPracticaED2
         {
             label1.Text = openFileDialog1.FileName;
             player.open(openFileDialog1.FileName);
+            
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             player.stop();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            folderBrowserDialog1.ShowDialog();
+           string[] canciones =  Directory.GetFiles(folderBrowserDialog1.SelectedPath, "*mp3");
+
+            string k=    file.Properties.Duration.ToString();
+    
+        }
+
+        private void folderBrowserDialog1_HelpRequest(object sender, EventArgs e)
+        {
+            
         }
     }
 }
