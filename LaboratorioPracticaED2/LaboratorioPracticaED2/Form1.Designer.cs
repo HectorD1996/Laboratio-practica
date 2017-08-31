@@ -37,6 +37,7 @@
             this.button4 = new System.Windows.Forms.Button();
             this.ListaMusica = new System.Windows.Forms.ListBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btnRegresar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -90,11 +91,11 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(479, 59);
+            this.button4.Location = new System.Drawing.Point(539, 25);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
             this.button4.TabIndex = 4;
-            this.button4.Text = "button4";
+            this.button4.Text = "Buscar";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
@@ -108,16 +109,28 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(462, 29);
+            this.textBox1.Location = new System.Drawing.Point(433, 27);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 6;
+            // 
+            // btnRegresar
+            // 
+            this.btnRegresar.Location = new System.Drawing.Point(539, 54);
+            this.btnRegresar.Name = "btnRegresar";
+            this.btnRegresar.Size = new System.Drawing.Size(61, 23);
+            this.btnRegresar.TabIndex = 7;
+            this.btnRegresar.Text = "Regresar";
+            this.btnRegresar.UseVisualStyleBackColor = true;
+            this.btnRegresar.Visible = false;
+            this.btnRegresar.Click += new System.EventHandler(this.button5_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(625, 328);
+            this.Controls.Add(this.btnRegresar);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.ListaMusica);
             this.Controls.Add(this.button4);
@@ -143,6 +156,7 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.ListBox ListaMusica;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button btnRegresar;
     }
 }
 

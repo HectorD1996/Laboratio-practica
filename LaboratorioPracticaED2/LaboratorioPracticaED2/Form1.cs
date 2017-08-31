@@ -17,7 +17,7 @@ namespace LaboratorioPracticaED2
         TagLib.File file = TagLib.File.Create(@"C:\Users\Hector\Music\01 - MOON PRIDE.mp3");
        
         List<Cancion> Canciones = new List<Cancion>();
-        
+        List<String> Backup = new List<string>();
         MusicPlayer player = new MusicPlayer();
 
         public Form1()
@@ -41,17 +41,21 @@ namespace LaboratorioPracticaED2
                 
             }
             ListaMusica.Items.Clear();
+            LLenar_Listbox();
+           
+            
+            
+        }
+        public void LLenar_Listbox()
+        {
+         
+            ListaMusica.Items.Clear();
             foreach (Cancion i in Canciones)
             {
-              
-                    ListaMusica.Items.Add(i.Titulo);
-               
-                    
-                
-                
+
+                ListaMusica.Items.Add(i.Titulo);
+
             }
-            
-            
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -82,16 +86,40 @@ namespace LaboratorioPracticaED2
 
         private void button4_Click(object sender, EventArgs e)
         {
-            folderBrowserDialog1.ShowDialog();
-           string[] canciones =  Directory.GetFiles(folderBrowserDialog1.SelectedPath, "*mp3");
-
-            string k=    file.Properties.Duration.ToString();
+            bool encontrada = false;
+            
+            foreach (Cancion m in Canciones)
+            {
+                if (m.Titulo.Contains(textBox1.Text))
+                {
+                    
+                    if (!encontrada){ListaMusica.Items.Clear();}
+                    encontrada = true;
+                    ListaMusica.Items.Add(m.Titulo);
+                    btnRegresar.Visible = true;
+                    
+                }
+                                 
+                
+            }
+            if (!encontrada)
+            {
+                MessageBox.Show("Cancion" + textBox1.Text + "no encontrada revise su entrada en intente otra vez");
+            }
+            else {
+                encontrada = false;
+            }
     
         }
 
         private void folderBrowserDialog1_HelpRequest(object sender, EventArgs e)
         {
             
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            LLenar_Listbox();
         }
     }
 }
