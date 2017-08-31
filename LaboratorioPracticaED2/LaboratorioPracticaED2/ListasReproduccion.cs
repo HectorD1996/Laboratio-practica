@@ -8,6 +8,7 @@ namespace LaboratorioPracticaED2
 {
     class ListasReproduccion
     {
+        //en metodo listaRepruccion almcena el nombre de la misma asi como la lista de caciones que contiene
         public String NombreLista = "";
         public List<Cancion> ListaR = new List<Cancion>();
 
@@ -15,12 +16,14 @@ namespace LaboratorioPracticaED2
         {
 
         }
+        //se asigna ell nombre y la lista declarada
         public ListasReproduccion(List<Cancion> Tracks,string ListName)
         {
             NombreLista = ListName;
             ListaR = Tracks;
         }
 
+        //para ordenar se utilizan los metodo OrderBy y OrderbyDesending segun el valor string recibido
         public void Ordenar(String tipo)
         {
             switch (tipo)

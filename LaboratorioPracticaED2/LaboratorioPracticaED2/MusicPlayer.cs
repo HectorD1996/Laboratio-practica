@@ -11,8 +11,11 @@ namespace LaboratorioPracticaED2
 {
     class MusicPlayer
     {
+        //se utiliza un DLL externo para obtener funcionalidad basica de reproductor de musica
         [DllImport("winmm.dll")]
         private static extern long mciSendString(string lpstrCommand, StringBuilder lpstrReturnString, int uReturnLength, int hwndCallback);
+
+        // es especifica comando basico de abrir un archivo reprodurcilo y deternelo
         public void open(string file)
         {
             string command = "open \"" + file + "\" type MPEGVideo alias MyMp3";

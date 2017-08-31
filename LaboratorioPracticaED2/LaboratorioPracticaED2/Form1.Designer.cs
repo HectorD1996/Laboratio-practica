@@ -43,6 +43,9 @@
             this.button5 = new System.Windows.Forms.Button();
             this.btnOrdenar = new System.Windows.Forms.Button();
             this.cmbOpciones = new System.Windows.Forms.ComboBox();
+            this.lbInformacion = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lbDuracion = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -57,7 +60,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(596, 144);
+            this.button1.Location = new System.Drawing.Point(596, 162);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 1;
@@ -71,7 +74,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(596, 173);
+            this.button2.Location = new System.Drawing.Point(596, 191);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 2;
@@ -86,7 +89,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(596, 202);
+            this.button3.Location = new System.Drawing.Point(596, 220);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 3;
@@ -182,11 +185,44 @@
             this.cmbOpciones.Size = new System.Drawing.Size(121, 21);
             this.cmbOpciones.TabIndex = 12;
             // 
+            // lbInformacion
+            // 
+            this.lbInformacion.AutoSize = true;
+            this.lbInformacion.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lbInformacion.Location = new System.Drawing.Point(542, 109);
+            this.lbInformacion.Name = "lbInformacion";
+            this.lbInformacion.Size = new System.Drawing.Size(0, 13);
+            this.lbInformacion.TabIndex = 13;
+            this.lbInformacion.Visible = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label2.Location = new System.Drawing.Point(585, 86);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(111, 13);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "Ahora Reproduciendo";
+            // 
+            // lbDuracion
+            // 
+            this.lbDuracion.AutoSize = true;
+            this.lbDuracion.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lbDuracion.Location = new System.Drawing.Point(585, 131);
+            this.lbDuracion.Name = "lbDuracion";
+            this.lbDuracion.Size = new System.Drawing.Size(0, 13);
+            this.lbDuracion.TabIndex = 15;
+            this.lbDuracion.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(760, 328);
+            this.Controls.Add(this.lbDuracion);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lbInformacion);
             this.Controls.Add(this.cmbOpciones);
             this.Controls.Add(this.btnOrdenar);
             this.Controls.Add(this.button5);
@@ -224,6 +260,9 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button btnOrdenar;
         private System.Windows.Forms.ComboBox cmbOpciones;
+        private System.Windows.Forms.Label lbInformacion;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lbDuracion;
     }
 }
 
