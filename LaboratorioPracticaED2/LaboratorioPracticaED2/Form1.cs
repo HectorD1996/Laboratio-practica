@@ -145,6 +145,8 @@ namespace LaboratorioPracticaED2
             LLenar_Listbox();
             btnRegresar.Visible = false;
             ListaListas.SelectedIndex = -1;
+            btnOrdenar.Visible = false;
+            cmbOpciones.Visible = false;
         }
 
         //agregar una cancion a la lista 
@@ -230,7 +232,8 @@ namespace LaboratorioPracticaED2
         //se toma la lista seleccionada se busca en la lista de Lista y se toma su lista de cacnciones para mostrarla
         private void button5_Click_1(object sender, EventArgs e)
         {
-            
+            btnOrdenar.Visible = true;
+            cmbOpciones.Visible = true;
             ListaMusica.Items.Clear();
             btnRegresar.Visible = true;
             foreach (ListasReproduccion l in ListRepro)

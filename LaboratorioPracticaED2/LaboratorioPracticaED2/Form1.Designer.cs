@@ -170,6 +170,7 @@
             this.btnOrdenar.TabIndex = 11;
             this.btnOrdenar.Text = "Ordenar";
             this.btnOrdenar.UseVisualStyleBackColor = true;
+            this.btnOrdenar.Visible = false;
             this.btnOrdenar.Click += new System.EventHandler(this.btnOrdenar_Click);
             // 
             // cmbOpciones
@@ -184,6 +185,7 @@
             this.cmbOpciones.Name = "cmbOpciones";
             this.cmbOpciones.Size = new System.Drawing.Size(121, 21);
             this.cmbOpciones.TabIndex = 12;
+            this.cmbOpciones.Visible = false;
             // 
             // lbInformacion
             // 
